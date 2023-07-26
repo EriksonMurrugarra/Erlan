@@ -3,13 +3,13 @@ import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gsta
 import { getFirestore, collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBJmSs7PsVCQRrkKntc4fQNk9pswC1sfLI",
-  authDomain: "erlan-2017.firebaseapp.com",
-  databaseURL: "https://erlan-2017.firebaseio.com",
-  projectId: "erlan-2017",
-  storageBucket: "erlan-2017.appspot.com",
-  messagingSenderId: "924389614614",
-  appId: "1:924389614614:web:5674d8c6722da154478137"
+  apiKey: "CHANGE_THIS",
+  authDomain: "CHANGE_THIS",
+  databaseURL: "CHANGE_THIS",
+  projectId: "CHANGE_THIS",
+  storageBucket: "CHANGE_THIS",
+  messagingSenderId: "CHANGE_THIS",
+  appId: "CHANGE_THIS"
 };
 
 const app = initializeApp(firebaseConfig);
