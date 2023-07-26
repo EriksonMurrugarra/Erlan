@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Erlan | Run</title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+    <script src="js/eriksonlabs.js"></script>	
+    <link href="css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles/index.css" />
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+    <style>
+      #footer {
+        color: rgb(81, 80, 80);
+        font-size: .8rem;
+        text-align: center;
+        margin-top: 5rem;
+      }
+
+      #qr-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      #console {
+        margin: 3rem;
+        border: 1px solid #444;
+        padding: 1rem;
+        padding-bottom: 3rem;
+        margin: 0 auto;
+        width: 600px;
+        margin-top: 3rem;
+      }
+
+      @media only screen and (max-width: 480px) {
+        #console {
+          width: 80%;
+          margin: 0 auto;
+          margin-top: 1rem;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <script>
+      function recargar() { 
+        location.reload();
+      }
+    </script>
+   
+    <div id="console"></div>
+    
+    <div id="footer">
+      <div id="qr-container">
+        <canvas id="qrcode"></canvas>
+      </div>
+      <button onclick="recargar()" class="btn1" style="display: inline-block;">
+        Reiniciar
+      </button >
+      <a href="https://eriksonmurrugarra.tech" href="_blank"> 
+         <br/><br/>
+        <b>Erlan</b>  por <b>Erikson Murrugarra</b>
+        </a>
+    </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+      import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js";
+      import { getFirestore, collection, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBJmSs7PsVCQRrkKntc4fQNk9pswC1sfLI",
+        authDomain: "erlan-2017.firebaseapp.com",
+        databaseURL: "https://erlan-2017.firebaseio.com",
+        projectId: "erlan-2017",
+        storageBucket: "erlan-2017.appspot.com",
+        messagingSenderId: "924389614614",
+        appId: "1:924389614614:web:5674d8c6722da154478137"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+
+      var code = window.location.search.replace("?code=", "");
+      var url = "https://code.celta.tech/run.html?code=" + code;
+
+    //  new QRCode(document.getElementById("qrcode"), {
+    //       text: url
+    //     });
+    setTimeout(()=>{
+    let qrcodeContainer = document.getElementById("qrcode");
+        qrcodeContainer.innerHTML = "";
+        new QRious({
+          element: qrcodeContainer,
+          value: url
+        });
+      }, 1000);
+
+      console.log( "https://code.celta.tech/run.html?code=" + code);
+      if (code == "")
+      {
+        alert("No hay codigo para mostrar");
+        throw ''
+      }
+
+      const snippetRef = doc(getFirestore(app), "snippets", code);
+
+      getDoc(snippetRef)
+        .then(snap => {
+          if (snap.exists())
+          {
+            ejecuta(snap.data().code);
+          }
+        })
+        .catch((err) => {
+          console.log("error trayendo snipet");
+          console.log(err);
+        });
+
+
+        function ejecuta(code)
+        {
+          var e1 = new Erikson();
+          e1.fnInitErikson(code, true);
+        }
+
+    </script>
+  </body>
+</html>

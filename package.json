@@ -1,0 +1,6 @@
+{
+  "name": "algo",
+  "scripts": {
+    "deploy": "firebase deploy --project erlan-2017"
+  }
+}

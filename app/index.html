@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title> Erlan | Aprende a programar en Español!</title>
+		<link rel="shortcut icon" type="image/jpg" href="images/favicon.jpg" />
+		<meta charset="utf-8" />
+    <meta property="og:description" content="Esta aplicación fue desarrollada con el objetivo de hacer más entendible la algoritmia al momento de programar. Esta es la primera versión del lenguaje e interprete y espero le ayude tanto a niños, jovenes y adultos" />	
+		<script type="text/javascript" src="js/jquery-2.0.3.js"></script>
+		<script src="js/tutorialerikson.js"></script>	
+		<script src="js/eriksonlabs.js"></script>	
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="text/javascript" src="js/behaviors.js"></script>
+    <link rel="stylesheet" href="styles/index.css" />
+	</head>
+	<body>
+    <div class="Light">
+      <img src="images/light.png" />
+    </div>   
+		<div id="light">
+			<div class="btn2" id="Tutorial">
+				<table width="100%">
+          <tr> 
+            <td>Seleccione una opción:</td>
+            <td width="10%"><a class="btn1" onclick="closeTutorial()" style="font-size: .3em"><b>&nbsp; x &nbsp;</b></a></td>
+          </tr>
+        </table>
+				<a class="btn1" onclick="showTutorial(0)"> Bases del lenguaje </a>
+				<a class="btn1" onclick="showTutorial(1)"> Secuencia básica </a>
+				<a class="btn1" onclick="showTutorial(2)"> Lectura de datos </a>
+				<a class="btn1" onclick="showTutorial(3)"> Condiciones simples </a>
+				<a class="btn1" onclick="showTutorial(4)"> Juego Condiciones  </a>
+				<a class="btn1" onclick="showTutorial(5)"> Secuencias Repetitivas </a>
+			</div>
+			<div class="btn2" id="Errors">
+				<div>
+				Corrige la siguiente <b> Lista de Observaciones</b>
+				</div><br />
+				<div class="details" id="Errorer">					
+				</div>
+			</div>
+
+			<div id="Resultado">
+				<label id="Res"></label>
+			</div>
+		</div>
+    <!-- Inicio layout -->
+		<div id="layout" class="lt">
+      <!-- Inicio editor  -->
+      <!-- <div id="explorer">
+        <div id="explorer-nav">
+          <button class="btn1" style="background: gray">Nuevo +</button>
+        </div>
+        <div class="explorer-file">
+          <label>Nombre</label><button>X</button>
+        </div>
+        <div class="explorer-file">
+          <label>Nombre</label><button>X</button>
+        </div>
+        <div class="explorer-file">
+          <label>Nombre</label><button>X</button>
+        </div>
+      </div> -->
+			<div id="interpreter" class="lt">
+          <div class="toolbar">
+            <div class="left-controls">
+              <label>Fuente</label>
+              <input id="fontSize" type="number" value="14" onChange="changeEditorFontSize()" />
+              <button id="btnGuardar"  class="btn1" style="background: rgb(12, 43, 99)">Guardar</button>
+            </div>
+            <div style="display:flex; gap: .25rem;">
+              <button id="btnShare" class="btn1" onclick="share()">Compartir</button>
+              <button class="btn1" onclick="ejecuta()">Ejecutar ▷</button>
+            </div>
+          </div>
+	        <textarea id="textarea" style="width:100%; height: 100% !important; ">inicio
+  numero1 = aleatorio(1 hasta 10)
+  numero2 = aleatorio(2 hasta 40)
+  
+  respuesta = preguntar "Cuando es @numero1 + @numero2?"
+  
+  suma = numero1 + numero2
+  
+  si soniguales(suma con respuesta):
+    responder "Excelente!"
+  sino:
+    alertar "Error la respuesta correcta es: @suma"
+  finsi
+  
+fin</textarea>
+      <script src="js/editor-config.js"></script>
+			</div>
+      <!-- Fin Editor -->
+      <!-- Inicio Consola -->
+      <div id="consoler" class="lt">
+        <div id="banner">
+          <div>
+            <button  onclick="openBlackboard()">  </button>
+            <!-- <button onclick="openTutorial()">Tutorial</button> -->
+          </div>
+           <a href="https://eriksonmurrugarra.tech" href="_blank"> 
+             By <b>Erikson Murrugarra</b>
+          </a>
+        </div>
+        <div id="console">
+        </div>
+      </div>		
+      <!-- Fin Consola -->
+      <!-- Inicio Pizarra -->
+      <div id="pizarra">
+        <div>
+          <button onclick="changeBlackBoardColor('white')">W</button>
+          <button  onclick="changeBlackBoardColor('black')">B</button>
+          <button  onclick="closeBlackboard()">X</button>
+        </div>
+      </div>
+      <!-- Fin Pizarra -->
+    </div>
+    </div>  		
+	</body>
+</html>
